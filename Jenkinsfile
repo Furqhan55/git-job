@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Pull Code') {
             steps {
-                git git 'https://github.com/Furqhan55/git-job.git'
+                git 'https://github.com/Furqhan55/git-job.git'
             }
         }
 
