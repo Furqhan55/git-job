@@ -2,21 +2,15 @@ pipeline {
     agent any
 
     stages {
-        stage('Pull Code') {
-            steps {
-                git 'https://github.com/Furqhan55/git-job.git'
-            }
-        }
-
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t myapp .'
+                sh 'docker build -t furqhan-app .'
             }
         }
 
         stage('Run Container') {
             steps {
-                sh 'docker run -d myapp'
+                sh 'docker run -d furqhan-app'
             }
         }
     }
