@@ -2,17 +2,21 @@ pipeline {
     agent any
 
     stages {
-        stage('Step 1 - Info') {
+        stage('Pull Code') {
             steps {
-                sh 'echo "Hello Furqhan 🚀"'
-                sh 'date'
-                sh 'whoami'
+                git 'https://github.com/<your-username>/<repo>.git'
             }
         }
 
-        stage('Step 2 - List Files') {
+        stage('Build Docker Image') {
             steps {
-                sh 'ls -la'
+                sh 'docker build -t myapp .'
+            }
+        }
+
+        stage('Run Container') {
+            steps {
+                sh 'docker run -d myapp'
             }
         }
     }
