@@ -1,4 +1,4 @@
-name: My First CI Pipeline
+name: Docker CI
 
 on:
   push:
@@ -6,15 +6,12 @@ on:
       - main
 
 jobs:
-  build:
+  docker:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Code Checkout
+      - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Run Commands
-        run: |
-          echo "Hello Furqhan 🚀"
-          date
-          whoami
+      - name: Build Docker Image
+        run: docker build -t myapp .
